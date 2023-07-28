@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gritstone/controller/home_controller.dart';
+import 'package:gritstone/services/background_service.dart';
+import 'package:gritstone/services/location_service.dart';
 import 'package:gritstone/view/screen_home/screen_home.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +11,11 @@ class ScreenSplash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    requestLocationPermission();
+    // requestBackgroundLocationPermission();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await initializeService();
+    });
     final controller = Provider.of<HomeController>(context, listen: false);
     controller.getProducts();
     controller.getCategories();

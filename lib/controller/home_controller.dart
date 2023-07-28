@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,6 @@ class HomeController with ChangeNotifier {
     formatDateTime(lastSync);
     isLoading = true;
     hasError = false;
-    notifyListeners();
     final productBox = Hive.box<ProductModel>('productBox');
     try {
       final response = await http.get(Uri.parse(ApiEndPoints.productsUrl));
@@ -71,7 +69,6 @@ class HomeController with ChangeNotifier {
   Future<void> getCategories() async {
     isLoading = true;
     hasError = false;
-    notifyListeners();
     final categoryBox = Hive.box<ProductModel>('categoryBox');
     try {
       final response = await http.get(Uri.parse(ApiEndPoints.categoryUrl));
@@ -125,8 +122,6 @@ class HomeController with ChangeNotifier {
         thumbnail: productModel.thumbnail,
       );
     }).toList();
-    log(products.length.toString());
-    notifyListeners();
   }
 
   Future<void> getCategoriesFromHive() async {
@@ -144,8 +139,5 @@ class HomeController with ChangeNotifier {
         thumbnail: categoryModel.thumbnail,
       );
     }).toList();
-    log(categories.length.toString());
-
-    notifyListeners();
   }
 }

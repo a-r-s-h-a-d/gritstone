@@ -28,14 +28,20 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  battery_info: ^1.1.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_background_service: ^3.0.1
+  flutter_background_service_android: ^4.0.1
+  geocoding: ^2.1.0
+  geolocator: ^9.0.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   http: ^1.1.0
   intl: ^0.18.1
   lottie: ^2.5.0
+  permission_handler: ^10.4.3
   provider: ^6.0.5
 
 dev_dependencies:
